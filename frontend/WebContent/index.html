@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+<style>
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+.bg-lightgray
+{
+    background-color:LightGray;
+}
+</style>
+</head>
+<body  ng-app="myApp">
+
+<!--NAVBAR-->
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="head">
+            <div class="span12">
+                <div class="span6">
+                    <h1 class="muted">SOCIAL HUB</h1>
+                </div>
+
+                <div class="span4 offset2" style="margin-top:15px;">
+                    <a href="#/login"><button class="btn pull-right" type="button">SIGN IN</button></a>
+                    <a href="#/register"><button class="btn pull-right" type="button">SIGN UP</button></a>
+                  <!--<li><a href="" ng-click="logout()" ng-show="currentUser.username">logout</a></li>  --> 
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="nav">
+                    <li>
+                            <a href="#/">HOME</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">EVENTS<b
+                             class="caret"></b></a>
+                            <ul class="dropdown-menu">
+								<li><a href="#">View All Events</a></li>
+								<li><a href="#">Create an Event</a></li>
+							</ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">JOBS<b
+							class="caret"></b></a>
+                            <ul class="dropdown-menu">
+								<li><a href="#">View All Jobs</a></li>
+								<li><a href="#">Post A New Job</a></li>
+							</ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BLOG<b
+							class="caret"></b></a>
+                            <ul class="dropdown-menu">
+								<li><a href="#">View All Blogs</a></li>
+								<li><a href="#">Write A Blog</a></li>
+							</ul>
+						</li>
+                        						
+						<li class="dropdown"><a href="" class="dropdown-toggle"data-toggle="dropdown">FRIENDS<b
+							class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">View all Users</a></li>
+								<li><a href="#">Pending Requests</a></li>
+							</ul>
+						</li>	
+						
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!--NAVBAR ends -->
+
+<a href="#/register">REGISTER</a>
+<!-- view area -->
+	
+			<div>
+			<div ng-view>
+			</div>
+			</div>	
+<!-- view area ends -->
+
+<!-- FOOTER -->
+
+	<footer class="container-fluid text-center bg-lightgray">
+
+        <div class="copyrights" style="margin-top:25px;">
+            <p>SOCIAL HUB <BR>
+            © 2016, All Rights Reserved
+               <br>
+                <span>Web Design By:ABHISHEK JAIN</span></p>
+        </div>
+	</footer>
+
+<!-- Footer Ends -->
+</body>
+
+								<!-- SCRIPTS INCLUDE -->
+	
+<!-- Angular JS module -->
+<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+
+<!--  Angular JS ngRoute -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+
+<!-- BootStrap -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">	
+
+
+	<script type="text/javascript" src="app.js"></script>
+	
+	<script type="text/javascript" src="c_user/UserController.js"></script> 
+	<script type="text/javascript" src="c_user/UserService.js"></script> 
+	
+	<script type="text/javascript" src="c_job/JobController.js"></script>
+	<script type="text/javascript" src="c_job/JobService.js"></script>
+	
+	<script type="text/javascript" src="c_event/EventController.js"></script>
+	<script type="text/javascript" src="c_event/EventService.js"></script>
+	
+	<script type="text/javascript" src="c_blog/BlogController.js"></script>
+	<script type="text/javascript" src="c_blog/BlogService.js"></script>
+	<script type="text/javascript" src="c_blog/blogDetailController.js"></script>
+	
+	<script type="text/javascript" src="c_friend/FriendController.js"></script>
+	<script type="text/javascript" src="c_friend/FriendService.js"></script>
+
+
+
+</html>

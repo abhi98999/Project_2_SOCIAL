@@ -1,0 +1,16 @@
+/*package com.social.backend.DAO;
+
+import java.util.List;
+import com.social.backend.model.Event;
+
+
+public interface EventDAO {
+
+	public boolean saveEvent(Event event);
+	public boolean updateEvent(Event event);
+	public boolean removeEvent(String e_eventId);
+	public List<Event> getAllEvents();
+	public Event getEventById(String e_eventId);
+	
+}
+*/
