@@ -1,8 +1,15 @@
 package com.social.backend.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +19,8 @@ import com.social.backend.model.User;
 import com.social.backend.DAO.UserDAO;
 @RestController
 public class UserController {
+	
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	UserDAO userdao;
@@ -28,13 +37,73 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user)
 	{
 		System.out.print("restcontroller createuser");
+		if(userdao.userGetById(user.getuUsername()) == null)
+			{
+			user.setAccountStatus('1');
+			user.setApproveStatus("P");
+			user.setuIsOnline('N');
+			userdao.addUser(user);
+			System.out.print("create user success");
+			} 
+		return new ResponseEntity<User> (user,HttpStatus.OK); 
 		
-		if(userdao.addUser(user))
-			System.out.print("create user success"); 
-			return new ResponseEntity<User> (user,HttpStatus.OK); 
 	}
 	
+	@RequestMapping(value = "/approveUsers/{uUsername}/{approveStatus}", method = RequestMethod.GET)
+	public ResponseEntity<User> approveUser(@PathVariable("uUsername") String uUsername,@PathVariable("approveStatus") String approveStatus)
+	{
+		log.debug("Starting of Method approveUser WITH USERNAME"+ uUsername);
+		userdao.approveUser(uUsername,approveStatus);
+		log.debug("User Approved Successfully WITH USERNAME:- "+uUsername);
+		log.debug("approved");
+	return new ResponseEntity<User>(HttpStatus.OK);
+	}
 	
+	@RequestMapping(value = "/PendingUsers", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> listPendingUsers(){
+		System.out.println("in controller");
+		log.debug("**********Starting of Method listPendingUsers**********");
+		List<User> userslist = userdao.getAllUsersForApproval();
+		if(userslist.isEmpty()){
+			return new ResponseEntity<List<User>>(userslist,HttpStatus.NO_CONTENT);
+		}else{
+			log.debug("**********Size found :- "+userslist.size()+"**********");
+			log.debug("**********Ending of Method listPendingUsers**********");
+			return new ResponseEntity<List<User>>(userslist,HttpStatus.OK);
+		}
+	}
 	
+	@RequestMapping(value = "/Authentication", method = RequestMethod.POST)
+	public ResponseEntity<User> authentication(@RequestBody User userdetail,HttpSession session){
+		log.debug("Calling Method Authentication");
+		User user=null;
+		user = userdao.isValidUser(userdetail.getuUsername(),userdetail.getuPassword());
+		System.out.println("abjh");
+		
+		if(user != null){
+			log.debug("User Exist With Given Credentials");
+			session.setAttribute("loggedInUser",user);
+			session.setAttribute("userName",user.getuFullName());
+			session.setAttribute("loggedInUserID", user.getuUsername());
+			userdao.setOnLine(user.getuUsername());
+		}
+		else
+		{	user = new User();
+			user.setErrorCode("404");
+			user.setErrorMessage("Invaid Credentials...!!!Please Enter Valid Username OR Password.");
+		}
+		return new ResponseEntity<User>(user , HttpStatus.OK);
+	}	
+	
+	@RequestMapping(value = "/Logout",method = RequestMethod.GET)
+	public ResponseEntity<User> logout(HttpSession session){
+		log.debug("Logout method");
+		String userId = (String) session.getAttribute("loggedInUserID");
+		userdao.setOffLine(userId);
+		session.invalidate();
+		log.debug("You Successfully Loggouedout");
+		return new ResponseEntity<User>(HttpStatus.OK);
+		
+	}
 	
 }

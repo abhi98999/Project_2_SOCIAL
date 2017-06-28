@@ -1,0 +1,65 @@
+package com.social.backend.DAO;
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.social.backend.model.Blog;
+
+@EnableTransactionManagement
+@Repository()
+public class BlogDaoImpl implements BlogDao{
+
+	private static final Logger log = LoggerFactory.getLogger(BlogDaoImpl.class);
+
+	@Autowired
+	private SessionFactory sessionfactory;
+	
+	public BlogDaoImpl(SessionFactory sessionfactory){
+		this.sessionfactory=sessionfactory;
+	}
+
+	@Transactional
+	public boolean saveBlog(Blog blog) {
+		try {
+			log.debug("Starting Method saveBlog.");
+				sessionfactory.getCurrentSession().save(blog);
+			log.debug("Ending Method saveBlog");
+			return true;
+		} catch (HibernateException e) {
+			log.error("Error Occured in Method saveBlog:-"+e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public Object getBlogById(String blogId, String status) {
+		try {
+			log.debug("Staring of Method getBlogById with blogId :- "+blogId);
+			Query query = sessionfactory.getCurrentSession().createQuery("FROM Blog WHERE blogId = '"+blogId+"' AND blogStatus = '"+status+"'");
+			@SuppressWarnings("unchecked")
+			List<Blog> blogList = query.list();
+			if(blogList != null && !blogList.isEmpty()){
+				log.debug("Record Found in method getBlogById with id ="+blogId);
+				return blogList.get(0);
+			}else{
+				log.debug("No Record Found in getBlogById with id ="+blogId);
+				return null;
+			}
+	} catch (HibernateException e) {
+		log.error("Error Occures in getBlogById Method..!! (id = '"+blogId+"')");
+		e.printStackTrace();
+		return null;
+	}
+	}
+	
+
+}

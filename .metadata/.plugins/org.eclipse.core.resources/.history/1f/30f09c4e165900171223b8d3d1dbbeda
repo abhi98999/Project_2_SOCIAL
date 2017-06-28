@@ -1,0 +1,16 @@
+package com.social.backend.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.social.backend.DAO.BlogDAO;
+
+public class BlogController {
+
+	private static final Logger log = LoggerFactory.getLogger(BlogController.class);
+	
+	@Autowired
+	BlogDAO blogdao;
+	
+}

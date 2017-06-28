@@ -1,80 +1,119 @@
 package com.social.backend.model;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
+import java.util.UUID;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
-@Entity
 @Component
-@Table(name="C_Blog")
+@Entity
+@Table
 public class Blog extends ErrorPage{
-
 	@Id
 	private String blogId;
 	
-//	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private User blogUsername; //created by
-	private String blogTitle;
-	private String blogText;// blog body	
-	private Date blogDate; //created on
+	private String userId;
 	
-	private boolean approved;
-
-	//@OneToMany(mappedBy="blog",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	private List<BlogComment> blogComments=new ArrayList<BlogComment>();
-
-	public boolean isApproved() {
-		return approved;
+	@NotBlank(message="Please Enter Blog Title")
+	private String blogTitle;
+	
+	@NotBlank(message="Please Enter Blog Description")
+	private String blogDescription;
+	
+	private String blogCreatedAt;
+	
+	private String blogModifiedAt;
+	
+	private char approvalStatus; //Pending,Approved,Rejected
+	
+	private char blogStatus;
+	
+	private int blogLike;
+	
+	private int blogDislike;
+	
+	public int getBlogLike() {
+		return blogLike;
 	}
-	public void setApproved(boolean approved) {
-		this.approved = approved;
+
+	public void setBlogLike(int blogLike) {
+		this.blogLike = blogLike;
 	}
+
+	public int getBlogDislike() {
+		return blogDislike;
+	}
+
+	public void setBlogDislike(int blogDislike) {
+		this.blogDislike = blogDislike;
+	}
+
 	public String getBlogId() {
 		return blogId;
 	}
+
 	public void setBlogId(String blogId) {
 		this.blogId = blogId;
 	}
-	
+
 	public String getBlogTitle() {
 		return blogTitle;
 	}
+
 	public void setBlogTitle(String blogTitle) {
 		this.blogTitle = blogTitle;
 	}
-	public String getBlogText() {
-		return blogText;
+
+	public String getBlogDescription() {
+		return blogDescription;
 	}
-	public void setBlogText(String blogText) {
-		this.blogText = blogText;
+
+	public void setBlogDescription(String blogDescription) {
+		this.blogDescription = blogDescription;
 	}
-	public Date getBlogDate() {
-		return blogDate;
+
+	public String getBlogCreatedAt() {
+		return blogCreatedAt;
 	}
-	public void setBlogDate(Date blogDate) {
-		this.blogDate = blogDate;
+
+	public void setBlogCreatedAt(String blogCreatedAt) {
+		this.blogCreatedAt = blogCreatedAt;
 	}
-	public List<BlogComment> getBlogComments() {
-		return blogComments;
+
+	public String getBlogModifiedAt() {
+		return blogModifiedAt;
 	}
-	public void setBlogComments(List<BlogComment> blogComments) {
-		this.blogComments = blogComments;
+
+	public void setBlogModifiedAt(String blogModifiedAt) {
+		this.blogModifiedAt = blogModifiedAt;
 	}
-	public User getBlogUsername() {
-		return blogUsername;
+
+	public char getApprovalStatus() {
+		return approvalStatus;
 	}
-	public void setBlogUsername(User blogUsername) {
-		this.blogUsername = blogUsername;
+
+	public void setApprovalStatus(char approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
+
+	public char getBlogStatus() {
+		return blogStatus;
+	}
+
+	public void setBlogStatus(char blogStatus) {
+		this.blogStatus = blogStatus;
 	}
 	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public Blog() {
+		this.blogId = "BLG" + UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
+
 }

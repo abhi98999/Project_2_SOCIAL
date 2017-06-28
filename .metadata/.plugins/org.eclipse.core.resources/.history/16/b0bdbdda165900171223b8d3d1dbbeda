@@ -1,0 +1,55 @@
+package com.social.backend.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.social.backend.DAO.BlogDao;
+import com.social.backend.model.Blog;
+
+public class BlogController {
+
+	private static final Logger log = LoggerFactory.getLogger(BlogController.class);
+	
+	@Autowired
+	BlogDao blogdao;
+	
+	@RequestMapping(value = "/CreateBlog", method = RequestMethod.POST)
+	public ResponseEntity<Blog> createBlog(@RequestBody Blog blog,HttpSession session){
+		log.debug("**********Starting of Method createUser**********");
+		if(BlogDao.getBlogById(blog.getBlogId(),"0") == null){
+
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            String blogCreatedAt = (dateFormat.format(date));
+            
+			DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date2 = new Date();
+            String blogModifiedAt = (dateFormat2.format(date2));
+            
+            UserDetail loggedInUser = (UserDetail) session.getAttribute("loggedInUser");
+            blog.setUserId(loggedInUser.getUserId());
+           
+            blog.setBlogCreatedAt(blogCreatedAt);
+            blog.setBlogModifiedAt(blogModifiedAt);
+            blog.setApprovalStatus('P');
+            blog.setBlogStatus('0');
+            
+			blogDao.saveBlog(blog);
+			log.debug("**********New Blog Created Successfully**********");
+			blog = new Blog();
+			blog.setErrorMessage("Blog Created Successfully..!!!Wait for the Admin Approval.");
+			return new ResponseEntity<Blog>(blog , HttpStatus.OK);
+		}
+		log.debug("**********Blog already Exist with ID :-"+blog.getBlogId()+" **********");
+		blog.setErrorMessage("Blog Already Exist With ID:-"+blog.getBlogId());
+		return new ResponseEntity<Blog>(blog , HttpStatus.OK);
+	}
+	
+}

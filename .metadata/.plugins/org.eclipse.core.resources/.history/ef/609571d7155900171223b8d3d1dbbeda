@@ -1,0 +1,15 @@
+package com.social.backend.DAO;
+import com.social.backend.model.Blog;
+
+public class BlogDAOImpl implements BlogDAO{
+
+	private static final Logger log = LoggerFactory.getLogger(BlogDAOImpl.class);
+
+	
+	public boolean saveBlog(Blog blog) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
+}

@@ -19,13 +19,13 @@ public class User extends ErrorPage{
 	private String uUsername;
 	
 	private String uPassword;
-	@Email
+	
 	private String uEmailId;
 	private long uPhoneNumber;
 	private String uRole;	
 	private char uIsOnline;
 	
-	private char approveStatus ;
+	private String approveStatus ;
 	private char accountStatus;
 	
 	public String getuFullName() {
@@ -70,10 +70,10 @@ public class User extends ErrorPage{
 	public void setuIsOnline(char uIsOnline) {
 		this.uIsOnline = uIsOnline;
 	}
-	public char getApproveStatus() {
+	public String getApproveStatus() {
 		return approveStatus;
 	}
-	public void setApproveStatus(char approveStatus) {
+	public void setApproveStatus(String approveStatus) {
 		this.approveStatus = approveStatus;
 	}
 	public char getAccountStatus() {

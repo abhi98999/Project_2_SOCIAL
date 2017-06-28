@@ -1,0 +1,10 @@
+1498372814669	Delete element
+1498372817085	Delete element
+1498372819273	Delete element
+1498422659427	Rename type 'EventController'
+1498422671425	Rename type 'EventDAO'
+1498422681747	Rename type 'EventDAOImpl'
+1498422694999	Rename type 'Event'
+1498550176994	Rename type 'EventsDAO'
+1498550197737	Rename type 'EventDAO'
+1498556599351	Rename field 'eventDao'

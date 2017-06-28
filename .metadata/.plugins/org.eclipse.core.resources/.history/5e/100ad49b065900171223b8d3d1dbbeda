@@ -1,0 +1,17 @@
+package com.social.backend.DAO;
+
+
+import java.util.List;
+import com.social.backend.model.Blog;
+
+public interface BlogDAO {
+	
+	public boolean saveBlog(Blog blog);
+	
+	
+	public Blog getBlogById(String blogId,String status);
+	
+	
+	
+}
+

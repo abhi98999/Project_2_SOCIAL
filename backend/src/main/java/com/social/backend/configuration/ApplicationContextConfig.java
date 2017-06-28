@@ -14,14 +14,9 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//import com.social.backend.model.Blog;
-//import com.social.backend.model.BlogComment;
-import com.social.backend.model.Event;
-import com.social.backend.model.Forum;
-import com.social.backend.model.ForumComment;
-import com.social.backend.model.Job;
-import com.social.backend.model.JobApplication;
-import com.social.backend.model.User;
+import com.social.backend.model.Blog;
+import com.social.backend.model.Events;
+import com.social.backend.model.User; 
 
 @Configuration
 	@EnableTransactionManagement
@@ -56,13 +51,12 @@ import com.social.backend.model.User;
 			LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 			sessionBuilder.addProperties(getHibernateProperties());
 			sessionBuilder.addAnnotatedClass(User.class);
-		//	sessionBuilder.addAnnotatedClass(Blog.class);
-		//	sessionBuilder.addAnnotatedClass(BlogComment.class);
-			sessionBuilder.addAnnotatedClass(Event.class);
-			sessionBuilder.addAnnotatedClass(Forum.class);
-			sessionBuilder.addAnnotatedClass(ForumComment.class);
-			sessionBuilder.addAnnotatedClass(Job.class);
-			sessionBuilder.addAnnotatedClass(JobApplication.class);
+			sessionBuilder.addAnnotatedClass(Blog.class);
+			sessionBuilder.addAnnotatedClass(Events.class);
+			//sessionBuilder.addAnnotatedClass(Forum.class);
+			//sessionBuilder.addAnnotatedClass(ForumComment.class);
+			//sessionBuilder.addAnnotatedClass(Job.class);
+			//sessionBuilder.addAnnotatedClass(JobApplication.class);
 
 			return sessionBuilder.buildSessionFactory();
 		}

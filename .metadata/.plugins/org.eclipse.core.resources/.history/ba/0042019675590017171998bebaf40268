@@ -1,0 +1,21 @@
+package com.social.backend.DAO;
+
+
+
+
+import java.util.List;
+
+import com.social.backend.model.User;
+
+public interface UserDAO {
+
+	public boolean addUser(User user);
+	public boolean approveUser(String uUsername,String approveStatus);
+	public List<User> getAllUsersForApproval();
+	public User userGetById(String uUsername);
+	public User isValidUser(String uUsername,String uPassword);
+	public void setOnLine(String uUsername);
+	public void setOffLine(String userId);
+
+
+}

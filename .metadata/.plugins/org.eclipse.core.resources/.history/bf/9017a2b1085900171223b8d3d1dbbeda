@@ -1,0 +1,44 @@
+'use strict';
+
+var app = angular.module('myApp', [ 'ngRoute']);
+
+app.config(function($routeProvider) {
+	$routeProvider
+	.when('/register',{
+		
+		templateUrl : 'c_user/register.html',
+		controller  : 'UserController'
+	})
+	.when('/login',{
+		
+		templateUrl : 'c_user/login.html',
+		controller  : 'UserController'
+	})
+	
+	.when('/profile',{
+		
+		templateUrl : 'c_user/profile.html',
+		controller  : 'UserController'
+	})
+	
+	//ADMIN RELATED
+	
+
+	.when('/manageUsers',{
+		templateUrl: 'admin/manageUsers.html',
+		controller :'AdminController'		
+	})
+	
+	.when('/manageBlogs',{
+		templateUrl: 'admin/manageBlogs.html',
+		controller :'AdminController'		
+	})
+	 
+	//Blog related
+	.when('/addblog',{
+		templateUrl: 'c_blog/create_Blog.html',
+		controller :'BlogController'		
+	})
+
+	
+});

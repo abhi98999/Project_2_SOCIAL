@@ -1,0 +1,12 @@
+127.0.0.1 - - [16/Jun/2017:01:30:28 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:30 +0530] "GET /frontend/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:31 +0530] "GET /frontend/js/angular-cookies.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:32 +0530] "GET /frontend/app.js HTTP/1.1" 200 475
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:33 +0530] "GET /frontend/c_user/UserService.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:33 +0530] "GET /frontend/admin/AdminController.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:33 +0530] "GET /frontend/admin/AdminService.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:52 +0530] "GET /frontend/admin/manageUsers.html HTTP/1.1" 200 2368
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:56 +0530] "GET /backend/PendingUsers HTTP/1.1" 204 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:56 +0530] "GET /backend/PendingUsers HTTP/1.1" 204 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:56 +0530] "GET /backend/PendingUsers HTTP/1.1" 204 -
+0:0:0:0:0:0:0:1 - - [16/Jun/2017:01:30:56 +0530] "GET /backend/PendingUsers HTTP/1.1" 204 -

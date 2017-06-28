@@ -1,0 +1,6 @@
+package com.social.backend.DAO;
+
+public interface BlogDAO {
+
+	public boolean saveBlog(Blog blog);
+}
