@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;frontend/WebContent/c_job&apos;&apos; to &apos;c_job&apos;" description="Rename resource &apos;c_job&apos;&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/c_job&apos;" name="c_job" stamp="1498718208317" updateReferences="true"/>
+</session>

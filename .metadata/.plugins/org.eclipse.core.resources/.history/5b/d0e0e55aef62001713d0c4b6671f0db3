@@ -1,0 +1,32 @@
+package com.social.backend.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Component
+public class FileUpload extends ErrorPage{
+	
+	@Id
+	private String usernmae;
+	@Lob
+	private byte[] image;
+	
+	public String getUsernmae() {
+		return usernmae;
+	}
+	public void setUsernmae(String usernmae) {
+		this.usernmae = usernmae;
+	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
+	
+}

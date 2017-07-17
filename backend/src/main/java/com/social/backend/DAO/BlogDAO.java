@@ -3,15 +3,26 @@ package com.social.backend.DAO;
 import java.util.List;
 
 import com.social.backend.model.Blog;
-import com.social.backend.model.BlogComment;
 
-public interface BlogDAO {
-
-	void saveBlogPost(Blog blog);
-	public List<Blog> getBlog(int approved);
-	public Blog getBlogById(int blogId);
-	void addBlogComment(BlogComment blogComment);
-	List<BlogComment> getBlogComments(int blogId);
-	void update(Blog blog);
-
+public interface BlogDao {
+	
+	public boolean saveBlog(Blog blog);
+	
+	public boolean updateBlog(Blog blog);
+	
+	public boolean removeBlog(String blogId);
+	
+	public List<Blog> getAllBlogs();
+	
+	public List<Blog> blogListByUserId(String userId);
+	
+	public List<Blog> blogListForApproval();
+	
+	public Blog getBlogById(String blogId,String status);
+	
+	public boolean approveBlog(String blogId , String status);
+	
+	public boolean bloglikes(String id);
+	
+	public boolean blogdislikes(String id);
 }

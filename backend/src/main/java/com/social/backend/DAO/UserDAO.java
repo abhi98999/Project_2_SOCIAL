@@ -10,12 +10,17 @@ import com.social.backend.model.User;
 public interface UserDAO {
 
 	public boolean addUser(User user);
+	public boolean updateUser(User user);
+	public boolean deleteUser(String uUsername);
 	public boolean approveUser(String uUsername,String approveStatus);
 	public List<User> getAllUsersForApproval();
 	public User userGetById(String uUsername);
 	public User isValidUser(String uUsername,String uPassword);
 	public void setOnLine(String username);
 	public void setOffLine(String username);
+	
+	public List<User> getAllUsers();
+
 
 
 }

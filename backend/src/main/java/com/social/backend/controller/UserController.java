@@ -98,12 +98,25 @@ public class UserController {
 	@RequestMapping(value = "/Logout",method = RequestMethod.GET)
 	public ResponseEntity<User> logout(HttpSession session){
 		log.debug("Logout method");
-		String userId = (String) session.getAttribute("loggedInUserID");
-		userdao.setOffLine(userId);
+		String uUsername = (String) session.getAttribute("loggedInUserID");
+		userdao.setOffLine(uUsername);
 		session.invalidate();
 		log.debug("You Successfully Loggouedout");
 		return new ResponseEntity<User>(HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value = "/Users", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> listAllUsers(){
+		log.debug("**********Starting of Method listAllUsers**********");
+		List<User> userslist = userdao.getAllUsers();
+		if(userslist.isEmpty()){
+			return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
+		}else{
+			log.debug("**********Size found :- "+userslist.size()+"**********");
+			log.debug("**********Ending of Method listAllUsers**********");
+			return new ResponseEntity<List<User>>(userslist,HttpStatus.OK);
+		}
 	}
 	
 }

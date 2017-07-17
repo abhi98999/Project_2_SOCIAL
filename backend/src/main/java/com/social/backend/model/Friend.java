@@ -1,6 +1,6 @@
 package com.social.backend.model;
 
-import java.sql.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,49 +8,53 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Entity
 @Component
-@Table(name="C_Friend")
+@Entity
+@Table
 public class Friend extends ErrorPage{
 	
 	@Id
-	private String fId;
-	private String fUserId;
-	private String fStatus; //new,accepted,rejected
-	private char fIsonline;
-	private Date fLastSeenTime;
-	public String getfId() {
-		return fId;
-	}
-	public void setfId(String fId) {
-		this.fId = fId;
-	}
-	public String getfUserId() {
-		return fUserId;
-	}
-	public void setfUserId(String fUserId) {
-		this.fUserId = fUserId;
-	}
-	public String getfStatus() {
-		return fStatus;
-	}
-	public void setfStatus(String fStatus) {
-		this.fStatus = fStatus;
-	}
-	public char getfIsonline() {
-		return fIsonline;
-	}
-	public void setfIsonline(char fIsonline) {
-		this.fIsonline = fIsonline;
-	}
-	public Date getfLastSeenTime() {
-		return fLastSeenTime;
-	}
-	public void setfLastSeenTime(Date fLastSeenTime) {
-		this.fLastSeenTime = fLastSeenTime;
-	}
+	private String id;
+	
+	private String friendId;
+	
+	private String userId;
+	
+	private char friendStatus;
 	
 	
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 
+	public String getFriendId() {
+		return friendId;
+	}
+
+	public void setFriendId(String friendId) {
+		this.friendId = friendId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public char getFriendStatus() {
+		return friendStatus;
+	}
+
+	public void setFriendStatus(char friendStatus) {
+		this.friendStatus = friendStatus;
+	}
+	public Friend() {
+		this.id = "FRN" + UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
 }

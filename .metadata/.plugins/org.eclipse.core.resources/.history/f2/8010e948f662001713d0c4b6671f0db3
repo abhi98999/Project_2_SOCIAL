@@ -1,0 +1,4 @@
+
+<div ng-controller="UserController as ctrl">
+<a href"#/fileUpload">profile pic</a> 
+</div> 

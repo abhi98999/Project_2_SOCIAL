@@ -1,0 +1,91 @@
+package com.social.backend.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table
+public class Job extends ErrorPage {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int jobId;
+	
+	@NotBlank(message="Please Enter Job Title")
+	private String jobTitle;
+	
+	@NotBlank(message="Please Enter JOB Description")
+	private String jobDescription;
+	
+	private String Role;
+	private String jobPostedOn;
+	private String jobLocation;
+	private String Contact;
+	private String email;
+	private char jobStatus;
+	public int getJobId() {
+		return jobId;
+	}
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+	public String getJobDescription() {
+		return jobDescription;
+	}
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
+	}
+	
+	public String getRole() {
+		return Role;
+	}
+	public void setRole(String role) {
+		Role = role;
+	}
+	public String getJobPostedOn() {
+		return jobPostedOn;
+	}
+	public void setJobPostedOn(String jobPostedOn) {
+		this.jobPostedOn = jobPostedOn;
+	}
+	public String getJobLocation() {
+		return jobLocation;
+	}
+	public void setJobLocation(String jobLocation) {
+		this.jobLocation = jobLocation;
+	}
+	public String getContact() {
+		return Contact;
+	}
+	public void setContact(String contact) {
+		Contact = contact;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public char getJobStatus() {
+		return jobStatus;
+	}
+	public void setJobStatus(char jobStatus) {
+		this.jobStatus = jobStatus;
+	}
+	
+		
+
+}

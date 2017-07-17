@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+<style>
+	body {
+    background-color: #eee;
+}
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body  ng-app="myApp">
+
+<div ng-controller="UserController as ctrl" class="ng-scope">
+<div class="container">
+
+            <form class="form-horizontal" ng-submit="ctrl.login()" method="post">
+                <h2>LOGIN FORM</h2>
+                <div class="form-group">
+					<label for="username" class="col-sm-3 control-label" >UserName</label>
+					<div class="col-sm-6">
+                        <input type="text" ng-model="ctrl.user.uUsername" placeholder="User Name" class="form-control" autofocus>
+                    </div>
+                </div> 
+				
+				<div class="form-group">
+					<label for="password" class="col-sm-3 control-label" >Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" ng-model="ctrl.user.uPassword" placeholder="Password" class="form-control" autofocus>
+                    </div>
+                </div>
+				
+                 <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                        <div class="col-sm-6-sm-offset-3"><a role="button"  href="#/register" class="btn btn-block btn-info">
+                        New User?? Click Here to Register</a></div>
+                        
+                    </div>
+                </div>
+				
+
+
+
+</body>
+<script type="text/javascript" src="c_user/UserController.js"></script> 
+<script type="text/javascript" src="c_user/UserService.js"></script> 
+</html>

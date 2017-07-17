@@ -56,7 +56,7 @@ public class EventsController {
 	            event.setE_eventStatus('1');
 				eventsDAO.saveEvent(event);
 				event = new Events();
-				event.setErrorMessage("New Event Posted Successfully..!!!");
+				event.setErrorMessage("New Event  Posted Successfully..!!!");
 				log.debug("New Event Created Successfully");
 				return new ResponseEntity<Events>(event , HttpStatus.OK);
 			}

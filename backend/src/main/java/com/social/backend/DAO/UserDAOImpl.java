@@ -150,6 +150,54 @@ public class UserDAOImpl implements UserDAO {
 		}
 		
 	}
+
+	public List<User> getAllUsers() {
+		try {
+			logger.debug("**********Starting of Method getAllUsers.**********");
+				Query query = sessionfactory.getCurrentSession().createQuery("FROM User WHERE accountStatus = 1");
+				logger.debug("**********Starting of get UsersList.**********");
+				@SuppressWarnings("unchecked")
+				List<User> list = query.list();
+				if(list==null || list.isEmpty()){
+					logger.debug("**********No User's are Availible.**********");
+				}
+			logger.debug("**********Ending of Method getAllUsers.**********");
+			logger.debug("**********Number of Records Found :-" + list.size()+".**********");
+			return list;
+		}catch (HibernateException e) {
+			logger.error("**********Error Occured in Method getAllUsers :-"+e.getMessage()+".**********");
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public boolean updateUser(User user) {
+		try {
+			logger.debug("Starting Method updateUser.");
+				sessionfactory.getCurrentSession().update(user);
+				sessionfactory.getCurrentSession().flush();
+			logger.debug("Ending Method updateUser");
+			return true;
+		} catch (HibernateException e) {
+			logger.error("Error Occured in Method updateUser:-"+e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean deleteUser(String uUsername) {
+		try {
+			logger.debug("Starting Method deleteUser.");
+				sessionfactory.getCurrentSession().createQuery("Update User set accountStatus = 0 where uUsername = '"+uUsername+"'").executeUpdate();
+			logger.debug("UserDetail removed with Id:-"+uUsername);
+			logger.debug("Ending Method deleteUser.");
+			return true;
+		} catch (HibernateException e) {
+			logger.error("Error Occured in deleteUser with (id = '"+uUsername+"') "+e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	
 }

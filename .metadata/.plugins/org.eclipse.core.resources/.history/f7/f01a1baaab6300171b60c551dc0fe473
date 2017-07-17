@@ -1,0 +1,57 @@
+package com.social.backend.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table
+public class Friend extends ErrorPage{
+	
+	@Id
+	private String id;
+	
+	private String friendId;
+	
+	private String userId;
+	
+	private char friendStatus;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFriendId() {
+		return friendId;
+	}
+
+	public void setFriendId(String friendId) {
+		this.friendId = friendId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public char getFriendStatus() {
+		return friendStatus;
+	}
+
+	public void setFriendStatus(char friendStatus) {
+		this.friendStatus = friendStatus;
+	}
+	
+}

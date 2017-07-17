@@ -1,0 +1,167 @@
+	<!DOCTYPE html>
+<html>
+<head>
+<style>
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+.bg-lightgray
+{
+    background-color:LightGray;
+}
+body
+{
+	
+	 background: url(image/img2.jpg);
+}
+</style>
+</head>
+
+<body  ng-app="myApp" data-ng-controller="UserController as ctrl">
+
+<!--NAVBAR-->
+
+<nav class="navbar navbar-default" >
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" class="btn btn-primary btn-primary">SOCIAL HUB</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				
+				<li><a href="#/home"><b>Home</b></a></li>
+				<li class="dropdown" data-ng-show="currentUser.userRole=='admin'" >
+				<a class="dropdown-toggle"  data-toggle="dropdown"><b>Admin</b><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/manageBlog">MANAGE BLOGS</a></li>
+						<li><a href="#/manageUsers">MANAGE USERS</a></li>
+					</ul>
+				</li>
+		
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown"><b>Job Opportunities<span class="caret"></span></b></a>
+					<ul class="dropdown-menu">
+					<li><a href="#/listOfJobs">Show List Of Job's</a></li>
+					<li><a href="#/listOfMyJobs">My Applied Job's</a></li>
+						<li><a href="#/create_job">Add New Job</a></li>
+						<li><a href="#/remove_job">Remove Job</a></li>
+						
+					</ul>
+				</li>
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown"><b>Blogs<span class="caret"></span></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/blog_list">Show List Of Blogs</a></li>
+						<li><a href="#/MyBlogList">My Active Blog's</a></li>
+						<li><a href="#/pendingBlog">My Pending Blog's</a></li>
+						<li><a href="#/MyRejectedBlog">My Rejected Blog's</a></li>
+						<li><a href="#/addBlog">Add New Blog</a></li>
+					</ul>
+				</li>
+				
+				
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown"><b>Friends<span class="caret"></span></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/showUsersList">Show List of User's</a></li>
+						<li><a href="#/myFriendList">My Friend List</a></li>
+						<li><a href="#/newFriendRequest">New Friend Request's</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown"><b>Events<span class="caret"></span></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/createEvent">Add New Event</a></li>
+						<li><a href="#/listOfEvents">Show List Of Events</a></li>
+					</ul>
+				</li>
+				
+				<li><a href="#/chat_forum"><b>Chat Forums</b></a></li>
+
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				
+				<li data-ng-show="currentUser.username==undefined">
+				<a href="#/register"><b>Sign Up</b></a>
+				</li>
+				<li data-ng-show="currentUser.username==undefined">
+				<a href="#/login"><b>Login</b></a>
+				</li>
+				
+				<li class="dropdown"  data-ng-hide="currentUser.username==undefined">
+				<a class="dropdown-toggle" data-toggle="dropdown"><b>My Profile<span class="caret"></span></b></a>
+				</li>
+				
+				<li data-ng-hide="currentUser.username==undefined">
+				<a href="" ng-click="ctrl.logout()">Logout</a>
+				</li>
+				
+			</ul>
+			
+		</div>
+	</nav>
+	
+<!--NAVBAR ends -->
+
+<!-- view area -->
+	
+			<div ng-view>
+			</div>
+				
+<!-- view area ends -->
+
+<!-- FOOTER -->
+
+	<footer class="container-fluid text-center ">
+
+        <div class="copyrights" style="margin-top:25px; color:#050961 " >
+            <p>SOCIAL HUB <BR>
+            © 2016, All Rights Reserved
+               <br>
+                <span>Web Design By:ABHISHEK JAIN</span></p>
+        </div>
+	</footer>
+
+<!-- Footer Ends -->
+</body>
+
+								<!-- SCRIPTS INCLUDE -->
+	
+<!-- Angular JS module -->
+<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+
+<!--  Angular JS ngRoute -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+<script type="text/javascript" src="js/angular-cookies.js"></script>
+<script type="text/javascript" src="js/angular-cookies.min.js"></script>
+
+<!-- BootStrap -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">	
+
+	<script type="text/javascript" src="app.js"></script>
+	
+	<script type="text/javascript" src="c_user/UserController.js"></script> 
+	<script type="text/javascript" src="c_user/UserService.js"></script> 
+	
+	<script type="text/javascript" src="admin/AdminController.js"></script>
+	<script type="text/javascript" src="admin/AdminService.js"></script>
+
+	<script type="text/javascript" src="c_events/EventController.js"></script>
+	<script type="text/javascript" src="c_events/EventService.js"></script>
+
+	<script type="text/javascript" src="c_blog/BlogController.js"></script>
+	<script type="text/javascript" src="c_blog/BlogService.js"></script>
+	
+	<script type="text/javascript" src="c_job/JobController.js"></script>
+	<script type="text/javascript" src="c_job/JobService.js"></script>
+
+</html>
