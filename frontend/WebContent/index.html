@@ -45,8 +45,8 @@ body
 					<ul class="dropdown-menu">
 					<li><a href="#/listOfJobs">Show List Of Job's</a></li>
 					<li><a href="#/listOfMyJobs">My Applied Job's</a></li>
-						<li><a href="#/create_job">Add New Job</a></li>
-						<li><a href="#/remove_job">Remove Job</a></li>
+						<li data-ng-show="currentUser.userRole=='admin'"><a href="#/create_job">Add New Job</a></li>
+						<li data-ng-show="currentUser.userRole=='admin'"><a href="#/remove_job">Remove Job</a></li>
 						
 					</ul>
 				</li>
@@ -118,6 +118,9 @@ body
 				
 <!-- view area ends -->
 
+	
+	
+
 <!-- FOOTER -->
 
 	<footer class="container-fluid text-center ">
@@ -147,6 +150,11 @@ body
 <!-- BootStrap -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="js/stomp.min.js"></script>
+<script type="text/javascript" src="js/ChatJS.js"></script>
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">	
@@ -170,4 +178,8 @@ body
 
 	<script type="text/javascript" src="c_friend/FriendController.js"></script>
 	<script type="text/javascript" src="c_friend/FriendService.js"></script>
+	
+	<script type="text/javascript" src="Chat/ChatController.js"></script>
+	<script type="text/javascript" src="Chat/ChatService.js"></script>
+	
 </html>

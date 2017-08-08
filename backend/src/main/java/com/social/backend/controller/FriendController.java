@@ -33,7 +33,7 @@ public class FriendController {
 	public ResponseEntity<List<Friend>> getMyFriends(HttpSession session){
 		log.debug("**********Calling of Method getMyFriends**********");
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
-		System.out.println("LOG IN USER ID :-"+loggedInUser.getuUsername());
+		System.out.println("LOG IN USER ID :-"+ loggedInUser.getuUsername());
 		List<Friend> myFriends = friendDao.getMyFriends(loggedInUser.getuUsername());
 		if(myFriends==null ||myFriends.isEmpty()){
 			log.debug("**********No Any Friend Found**********");

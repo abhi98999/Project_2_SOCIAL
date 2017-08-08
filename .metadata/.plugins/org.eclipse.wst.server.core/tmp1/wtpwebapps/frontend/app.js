@@ -106,6 +106,17 @@ app.config(function($routeProvider) {
 		controller : 'FriendController'
 	})	
 	
+	//Chat
+	
+	.when('/chat_forum', {
+		templateUrl : 'Chat/chat_forum.html',
+		controller : 'ChatController'
+	})
+	
+	.when('/chat', {
+		templateUrl : 'Chat/chat.html',
+		controller : 'ChatController'
+	})
 	
 });
 
